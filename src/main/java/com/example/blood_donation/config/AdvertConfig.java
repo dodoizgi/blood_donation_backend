@@ -31,6 +31,15 @@ public class AdvertConfig {
                     "yardimmm"
             );
 
+            Advert ahmet = new Advert(
+                    3,
+                    "ab",
+                    "-",
+                    "5321239654",
+                    "düzce devlet",
+                    "yardimmm"
+            );
+
             repository.saveAll(
                     List.of(ali,ayse)
             );
