@@ -11,17 +11,27 @@ import javax.persistence.*;
 @NoArgsConstructor
 @EnableAutoConfiguration
 @Entity
-@Table(name = "ADVERT")
+@Table(name = "userdb")
 @ToString
-public class Advert {
+public class UserModule {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
 
-    private String bloodGroup;
-    private String rh;
-    private String adress;
-    private String messages;
+    @Column(name = "mail")
+    private String mail;
+
+    @Column(name = "password")
+    private String password;
+
+    @Column(name = "name")
+    private String name;
+
+    @Column(name = "lastname")
+    private String lastname;
+
+    @Column(name = "phone")
     private String phone;
 }

@@ -8,7 +8,7 @@ import org.springframework.core.env.Environment;
 
 @Log4j2
 @Configuration
-public class AdvertConfig {
+public class UserConfig {
     @Bean
     CommandLineRunner commandLineRunner(Environment environment) {
         return args -> {

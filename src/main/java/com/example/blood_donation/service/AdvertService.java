@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 
 @Service
 public class AdvertService {
@@ -24,10 +23,10 @@ public class AdvertService {
     }
 
     public void addNewAdvert(Advert advert) {
-        Optional<Advert> advertOptinal = advertsrepository.findAdvertByBloodGroup(advert.getBloodGroup());
+       /* Optional<Advert> advertOptinal = advertsrepository.findAdvertByBloodGroup(advert.getBloodGroup());
         if (advertOptinal.isPresent()) {
             throw new IllegalStateException("blood group taken");
-        }
+        }*/
         advertsrepository.save(advert);
     }
 
