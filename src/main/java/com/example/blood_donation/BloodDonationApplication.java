@@ -12,12 +12,9 @@ import org.springframework.context.annotation.Import;
 
 import java.util.List;
 
-@Import({AdvertConfig.class, UserConfig.class})
 @SpringBootApplication()
 public class BloodDonationApplication {
 
-    @Autowired
-    private AdvertRepository advertRepository;
     public static void main(String[] args) {
         SpringApplication.run(BloodDonationApplication.class, args);
     }
