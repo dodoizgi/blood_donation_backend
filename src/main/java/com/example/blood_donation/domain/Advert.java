@@ -24,4 +24,5 @@ public class Advert {
     private String adress;
     private String messages;
     private String phone;
+    private int userId;
 }

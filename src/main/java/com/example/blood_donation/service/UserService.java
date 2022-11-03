@@ -1,24 +1,25 @@
 package com.example.blood_donation.service;
 
+import com.example.blood_donation.domain.Advert;
 import com.example.blood_donation.domain.UserModule;
+import com.example.blood_donation.repository.AdvertRepository;
 import com.example.blood_donation.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class UserService {
 
     private final UserRepository userRepository;
+    private final AdvertRepository advertRepository;
 
     @Autowired
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, AdvertRepository advertRepository) {
         this.userRepository = userRepository;
+        this.advertRepository = advertRepository;
     }
     public List<UserModule> getUsers() {
         return userRepository.findAll();
@@ -30,6 +31,14 @@ public class UserService {
             throw new IllegalStateException("User not found");
         }
         return userRepository.findUserModuleByMailAndPassword(mail, password);
+    }
+
+    public List<Advert> getUserAdverts(int id) {
+        List<Advert> advertList = advertRepository.findAdvertByUserId(id);
+        if (advertList.isEmpty()) {
+            throw new IllegalStateException("Advert not found");
+        }
+        return advertRepository.findAdvertByUserId(id);
     }
 
     public void addNewUser(UserModule userModule) {
@@ -44,10 +53,5 @@ public class UserService {
             );
         }
         userRepository.deleteById(userId);
-    }
-
-    @Transactional
-    public void updateUser(int userId, String userName, String userPhone) {
-
     }
 }

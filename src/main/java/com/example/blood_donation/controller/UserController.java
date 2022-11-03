@@ -1,5 +1,6 @@
 package com.example.blood_donation.controller;
 
+import com.example.blood_donation.domain.Advert;
 import com.example.blood_donation.domain.UserModule;
 import com.example.blood_donation.repository.UserRepository;
 import com.example.blood_donation.service.UserService;
@@ -32,6 +33,11 @@ public class UserController {
     @GetMapping("/login")
     public List<UserModule> getUsersByEmailAndPassword(@RequestParam String mail, @RequestParam String password) {
        return userService.getUsersByMailAndPassword(mail, password);
+    }
+
+    @GetMapping("/adverts")
+    public List<Advert> getUserAdverts(@RequestParam int id) {
+        return userService.getUserAdverts(id);
     }
 
     @PostMapping
